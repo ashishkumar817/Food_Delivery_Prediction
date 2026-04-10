@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodFlow | Delivery Prediction AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-glow"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-motorcycle"></i>
+                <span>FoodFlow <span class="ai-tag">AI</span></span>
+            </div>
+            <h1>Food Delivery Prediction</h1>
+            <p class="subtitle">Optimize your logistics with our high-accuracy machine learning model.</p>
+        </header>
+
+        <main>
+            <section class="card glass">
+                <div class="card-header">
+                    <h2><i class="fas fa-edit"></i> Order Details</h2>
+                    <p>Provide the parameters to estimate delivery performance.</p>
+                </div>
+                
+                <form id="predictionForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="distance_km"><i class="fas fa-map-marker-alt"></i> Distance (km)</label>
+                            <input type="number" id="distance_km" step="0.1" placeholder="e.g. 5.2" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="preparation_time_min"><i class="fas fa-utensils"></i> Cook Time (min)</label>
+                            <input type="number" id="preparation_time_min" placeholder="e.g. 15" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="courier_experience_yrs"><i class="fas fa-user-clock"></i> Courier Exp (yrs)</label>
+                            <input type="number" id="courier_experience_yrs" step="0.1" placeholder="e.g. 2.5" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="weather"><i class="fas fa-cloud-sun"></i> Weather</label>
+                            <select id="weather" required>
+                                <option value="Clear">Clear</option>
+                                <option value="Foggy">Foggy</option>
+                                <option value="Rainy">Rainy</option>
+                                <option value="Snowy">Snowy</option>
+                                <option value="Windy">Windy</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="traffic_level"><i class="fas fa-car-side"></i> Traffic Level</label>
+                            <select id="traffic_level" required>
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time_of_day"><i class="fas fa-clock"></i> Time of Day</label>
+                            <select id="time_of_day" required>
+                                <option value="Morning">Morning</option>
+                                <option value="Afternoon">Afternoon</option>
+                                <option value="Evening">Evening</option>
+                                <option value="Night">Night</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="vehicle_type"><i class="fas fa-truck"></i> Vehicle Type</label>
+                            <div class="radio-group">
+                                <label class="radio-item">
+                                    <input type="radio" name="vehicle_type" value="Bike" checked>
+                                    <span class="radio-label">Bike</span>
+                                </label>
+                                <label class="radio-item">
+                                    <input type="radio" name="vehicle_type" value="Scooter">
+                                    <span class="radio-label">Scooter</span>
+                                </label>
+                                <label class="radio-item">
+                                    <input type="radio" name="vehicle_type" value="Car">
+                                    <span class="radio-label">Car</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="predictBtn">
+                        <span>Get Prediction</span>
+                        <i class="fas fa-bolt"></i>
+                    </button>
+                </form>
+            </section>
+
+            <section id="resultSection" class="card glass result-card hidden">
+                <div class="result-header">
+                    <h3>Prediction Result</h3>
+                    <div id="statusBadge" class="badge">On-time</div>
+                </div>
+                
+                <div class="result-display">
+                    <div class="result-value">
+                        <span id="predictedTime">--</span>
+                        <small>Minutes</small>
+                    </div>
+                    <div class="timer-icon">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                </div>
+                
+                <p class="result-note">Estimated based on real-time traffic and weather patterns.</p>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2026 FoodFlow AI Prediction Engine. Built for efficiency.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
